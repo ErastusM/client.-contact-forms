@@ -37,9 +37,59 @@ h1 {
 }
 
 #noClients,
-#noContacts {
+#noContacts,
+#success {
     font-family: Raleway;
     text-align: center;
     color: #C41200;
     font-weight: bold
+}
+
+.contactH {
+    font-family: Raleway;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-wrapper {
+    margin: 50px auto;
+    max-width: 500px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #888;
+}
+
+.form-row {
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+}
+
+.form-row input[type=text],
+.form-row input[type=email],
+.form-row input[type=number] {
+    width: 250px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.button {
+    padding: 0.45rem 1.35rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 30px;
+    background-color: #C41200;
+    border: none;
+    color: white;
+}
+
+.button:hover {
+    cursor: pointer;
 }
