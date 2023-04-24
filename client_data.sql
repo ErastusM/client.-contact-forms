@@ -60,10 +60,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`contact_id`, `name`, `surname`, `email`, `linked_clients`, `client_code`) VALUES
-(1, 'Erastus', 'Matheus', 'mr.extrinsic@gmail.com', 1, ''),
-(4, 'Erastus', 'Matheus', 'erastusmatheus2@gmail.com', 1, ''),
-(5, 'Erastus', 'Matheus', 'mr.extrinsic@gmail.com', 1, ''),
-(6, 'Erastus', 'Matheus', 'mr.extrinsic@gmail.com', 1, '');
+
 
 -- --------------------------------------------------------
 
@@ -85,12 +82,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `full_name`) VALUES
-(1, '', '', '', '2023-04-24 01:52:11', ''),
-(2, '', '', '', '2023-04-24 01:52:11', ''),
-(3, '', '', '', '2023-04-24 01:52:46', ''),
-(4, '', '', '', '2023-04-24 01:52:46', ''),
-(5, '', '', '', '2023-04-24 01:57:03', ''),
-(6, '', '', '', '2023-04-24 01:57:03', '');
 
 --
 -- Indexes for dumped tables
