@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <h1 class="contactH">Create New Client</h1>
+
     <div class="form-wrapper">
+        <h1 class="contactH">Create New Client</h1>
         <div class="form-row">
             <form action="create_clients.php" method="post">
                 <label for="name">Name:</label>

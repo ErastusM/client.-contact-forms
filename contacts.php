@@ -12,8 +12,8 @@
 <body>
     <div class="form-wrapper">
         <h2 class="contactH">Create New Contact</h2>
-        <form action="create_contacts.php" method="post">
-            <div class="form-row">
+        <div class="form-row">
+            <form action="create_contacts.php" method="post">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" required>
                 <br><br>
@@ -27,8 +27,9 @@
                 <input type="number" name="linked_clients" id="linked_clients" min="0" max="200" required>
                 <br><br>
                 <input class="button" type="submit" value="submit">
-            </div>
-        </form>
+            </form>
+        </div>
+
     </div>
 </body>
 

@@ -24,6 +24,22 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
+    // Get the form data
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $email = $_POST['email'];
+    $linked_clients = $_POST['linked_clients'];
+
+    // Prepare the SQL query
+    $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
+
+    // Execute the query
+    if (mysqli_query($conn, $sql)) {
+        echo "New contact created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
     // Check if there are any contacts
     $sql = "SELECT DISTINCT contacts.*, clients.name AS client_name, clients.client_code AS client_code FROM contacts LEFT JOIN clients ON contacts.client_code = clients.client_code";
     $result = mysqli_query($conn, $sql);

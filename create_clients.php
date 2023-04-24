@@ -60,6 +60,7 @@
         echo "<div id ='noClients'>No client(s) found.</div>";
     } else {
         // Display all clients
+        echo "<h2 class='contactH'>Client(s) table</h2>";
         echo "<table id='client-table'>";
         echo "<tr><th>Name</th><th>Client Code</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
