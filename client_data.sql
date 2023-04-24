@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2023 at 05:54 AM
+-- Generation Time: Apr 24, 2023 at 07:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,13 +33,6 @@ CREATE TABLE `clients` (
   `client_code` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `clients`
---
-
-INSERT INTO `clients` (`name`, `linked_contacts`, `client_code`) VALUES
-('Erastus Matheus', 0, 'ERA001');
-
 -- --------------------------------------------------------
 
 --
@@ -60,7 +53,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`contact_id`, `name`, `surname`, `email`, `linked_clients`, `client_code`) VALUES
-
+(1, 'Erastus', 'Matheus', 'erastusmatheus3@gmail.com', 2, '');
 
 -- --------------------------------------------------------
 
@@ -82,6 +75,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `full_name`) VALUES
+(1, '', '', '', '2023-04-24 01:52:11', ''),
+(2, '', '', '', '2023-04-24 01:52:11', ''),
+(3, '', '', '', '2023-04-24 01:52:46', ''),
+(4, '', '', '', '2023-04-24 01:52:46', ''),
+(5, '', '', '', '2023-04-24 01:57:03', ''),
+(6, '', '', '', '2023-04-24 01:57:03', '');
 
 --
 -- Indexes for dumped tables
@@ -98,6 +97,7 @@ ALTER TABLE `clients`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`contact_id`),
+  ADD UNIQUE KEY `email` (`email`) USING HASH,
   ADD KEY `client_code` (`client_code`(768));
 
 --
@@ -114,7 +114,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

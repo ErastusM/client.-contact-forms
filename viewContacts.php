@@ -69,7 +69,7 @@
         echo "<table id='client-table'>";
         echo "<tr><th>ID</th><th>Name</th><th>Surname</th><th>Email</th><th>Linked Clients</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr><td>" . $row['contact_id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['client_name'] . " (" . $row['client_code'] . ")</td></tr>";
+            echo "<tr><td>" . $row['contact_id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['linked_clients'] . $row['client_name'] . " " . $row['client_code'] . "</td></tr>";
         }
         echo "</table>";
     }
