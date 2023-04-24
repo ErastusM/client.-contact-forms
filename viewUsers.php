@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Client List</title>
+    <title>User List</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,25 +23,23 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+    // Retrieve all users from the database, ordered by user ID
+    $sql = "SELECT id, full_name AS 'Full Name', email FROM users ORDER BY id ASC";
+    $result = mysqli_query($conn, $sql);
 
-    // Check if the form has been submitted
-    if (isset($_POST['submit'])) {
 
-        // Get the form data
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $full_name = $_POST["full_name"];
-
-        // Prepare the SQL query
-        $sql = "INSERT INTO users (username, email, password, full_name) VALUES ('$username', '$email', '$password', '$full_name')";
-
-        // Execute the query
-        if (mysqli_query($conn, $sql)) {
-            echo "<div id='success'> New user created successfully</div>";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    // Check if there are any users
+    if (mysqli_num_rows($result) == 0) {
+        echo "<div id ='success'>No user(s) found.</div>";
+    } else {
+        // Display all users
+        echo "<h2 class='contactH'>User(s) table</h2>";
+        echo "<table id='client-table'>";
+        echo "<tr><th>ID</th><th>Full Name</th><th>Email</th></tr>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr><td>" . $row['id'] . "</td><td>" . $row['Full Name'] . "</td><td>" . $row['email'] . "</td></tr>";
         }
+        echo "</table>";
     }
 
     // Close the database connection

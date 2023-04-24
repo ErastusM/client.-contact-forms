@@ -8,8 +8,10 @@ h1 {
 }
 
 #client-table {
+    max-height: 400px;
+    overflow: auto;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
     background-color: #fff;
     border-spacing: 0px 10px;
     max-width: 500px;

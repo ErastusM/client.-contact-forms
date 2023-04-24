@@ -14,7 +14,7 @@
     <div class="form-wrapper">
         <h1 class="contactH">Create New Client</h1>
         <div class="form-row">
-            <form action="create_clients.php" method="post">
+            <form action="viewClients.php" method="post">
                 <label for="name">Name:</label>
                 <input type="text" class="nameblock" name="name" id="name" required>
                 <br><br>
