@@ -34,7 +34,6 @@
 
         // Prepare the SQL query
         $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
-
         // Execute the query
         if (mysqli_query($conn, $sql)) {
             echo "<div id ='success'>New contact created successfully</div>";
