@@ -32,13 +32,27 @@
         $email = $_POST['email'];
         $linked_clients = $_POST['linked_clients'];
 
-        // Prepare the SQL query
-        $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
-        // Execute the query
-        if (mysqli_query($conn, $sql)) {
-            echo "<div id ='success'>New contact created successfully</div>";
+        //check if email already exisits 
+        $sql_check = "SELECT * FROM contacts WHERE email = '$email'";
+        $result_check = mysqli_query(
+            $conn,
+            $sql_check
+        );
+
+        if (
+            mysqli_num_rows($result_check) > 0
+        ) {
+            // Record with the same email address already exists
+            die("<div id='success'>Error: A contact with this email already exists.</div>");
         } else {
-            echo "<div id='error'>Error: " . $sql . "<br>" . mysqli_error($conn);
+            // Prepare the SQL query
+            $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
+            // Execute the query
+            if (mysqli_query($conn, $sql)) {
+                echo "<div id ='success'>New contact created successfully</div>";
+            } else {
+                echo "<div id='error'>Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
         }
     }
 
@@ -55,7 +69,7 @@
         echo "<table id='client-table'>";
         echo "<tr><th>ID</th><th>Name</th><th>Surname</th><th>Email</th><th>Linked Clients</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr><td>" . $row['contact_id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['client_name'] . " (" . $row['client_code'] . ")</td></tr>";
+            echo "<tr><td>" . $row['contact_id'] . "</td><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['linked_clients'] . $row['client_name'] . " " . $row['client_code'] . "</td></tr>";
         }
         echo "</table>";
     }

@@ -26,6 +26,7 @@
                 <label for="linked_clients">No. of Linked Clients:</label>
                 <input type="number" name="linked_clients" id="linked_clients" min="0" max="200" required>
                 <br><br>
+                <br><br>
                 <input class="button" type="submit" value="submit">
             </form>
         </div>
