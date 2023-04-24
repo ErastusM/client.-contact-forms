@@ -31,7 +31,7 @@
         $surname = $_POST['surname'];
         $email = $_POST['email'];
         $linked_clients = $_POST['linked_clients'];
-        
+
         //check if email already exisits 
         $sql_check = "SELECT * FROM contacts WHERE email = '$email'";
         $result_check = mysqli_query(
@@ -43,7 +43,7 @@
             mysqli_num_rows($result_check) > 0
         ) {
             // Record with the same email address already exists
-            die("<div id='error'>Error: A contact with this email already exists.</div>");
+            die("<div id='success'>Error: A contact with this email already exists.</div>");
         } else {
             // Prepare the SQL query
             $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
