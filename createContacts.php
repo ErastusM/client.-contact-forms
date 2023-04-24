@@ -13,7 +13,7 @@
     <div class="form-wrapper">
         <h2 class="contactH">Create New Contact</h2>
         <div class="form-row">
-            <form action="create_contacts.php" method="post">
+            <form action="viewContacts" method="post">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" required>
                 <br><br>
