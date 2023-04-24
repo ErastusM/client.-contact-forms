@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Client List</title>
+    <title>Contact Form</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,55 +10,27 @@
 </head>
 
 <body>
-    <?php
-    // Connect to the database
-    $servername = "localhost";
-    $username = "root";
-    $password = "password1";
-    $dbname = "client_data";
+    <div class="form-wrapper">
+        <h2 class="contactH">Create New Contact</h2>
+        <div class="form-row">
+            <form action="create_contacts.php" method="post">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                <br><br>
+                <label for="surname">Surname:</label>
+                <input type="text" name="surname" id="surname" required>
+                <br><br>
+                <label for="email">Email Address:</label>
+                <input type="email" name="email" id="email" required>
+                <br><br>
+                <label for="linked_clients">No. of Linked Clients:</label>
+                <input type="number" name="linked_clients" id="linked_clients" min="0" max="200" required>
+                <br><br>
+                <input class="button" type="submit" value="submit">
+            </form>
+        </div>
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Get the form data
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $email = $_POST['email'];
-    $linked_clients = $_POST['linked_clients'];
-
-    // Prepare the SQL query
-    $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
-
-    // Execute the query
-    if (mysqli_query($conn, $sql)) {
-        echo "New contact created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-
-    // Check if there are any contacts
-    $sql = "SELECT DISTINCT contacts.*, clients.name AS client_name, clients.client_code AS client_code FROM contacts LEFT JOIN clients ON contacts.client_code = clients.client_code";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) == 0) {
-        echo "<div id = 'noContacts'>No contact(s) found.</div>";
-    } else {
-        // Display all contacts
-        echo "<table>";
-        echo "<tr><th>Name</th><th>Surname</th><th>Email</th><th>Linked Clients</th></tr>";
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['client_name'] . " (" . $row['client_code'] . ")</td></tr>";
-        }
-        echo "</table>";
-    }
-
-    // Close the database connection
-    mysqli_close($conn);
-    ?>
+    </div>
 </body>
 
 </html>
