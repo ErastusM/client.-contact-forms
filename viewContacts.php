@@ -24,20 +24,23 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Get the form data
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $email = $_POST['email'];
-    $linked_clients = $_POST['linked_clients'];
+    // Check if the form was submitted and the required fields are set
+    if (isset($_POST['name']) && isset($_POST['surname']) && isset($_POST['email']) && isset($_POST['linked_clients'])) {
+        // Get the form data
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $email = $_POST['email'];
+        $linked_clients = $_POST['linked_clients'];
 
-    // Prepare the SQL query
-    $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
+        // Prepare the SQL query
+        $sql = "INSERT INTO contacts (name, surname, email, linked_clients) VALUES ('$name', '$surname', '$email', '$linked_clients')";
 
-    // Execute the query
-    if (mysqli_query($conn, $sql)) {
-        echo "New contact created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        // Execute the query
+        if (mysqli_query($conn, $sql)) {
+            echo "<div id ='success'>New contact created successfully</div>";
+        } else {
+            echo "<div id='error'>Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
 
     // Check if there are any contacts
@@ -48,7 +51,8 @@
         echo "<div id = 'noContacts'>No contact(s) found.</div>";
     } else {
         // Display all contacts
-        echo "<table>";
+        echo "<h2 class='contactH'>Contact(s) table</h2>";
+        echo "<table id='client-table'>";
         echo "<tr><th>Name</th><th>Surname</th><th>Email</th><th>Linked Clients</th></tr>";
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr><td>" . $row['name'] . "</td><td>" . $row['surname'] . "</td><td>" . $row['email'] . "</td><td>" . $row['client_name'] . " (" . $row['client_code'] . ")</td></tr>";
